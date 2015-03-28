@@ -15,7 +15,7 @@ abstract class ServiceBase
     private shared static ServiceBase _singleton;
     private static ServiceBase _service;
 
-    private shared
+    private //shared
     {
         string _serviceName;
         string _displayName;
@@ -203,7 +203,7 @@ private:
 
         Sleep(50); //delay before getting handler
 
-        _service._serviceStatusHandle = RegisterServiceCtrlHandlerEx(cast(char*) toStringz(_service._serviceName),
+        _service._serviceStatusHandle = RegisterServiceCtrlHandlerExA(cast(char*) toStringz(_service._serviceName),
                                          &_service.ServiceControlHandler, null);
 
         if (!_service._serviceStatusHandle) throw new Exception(to!string(GetLastError()));
